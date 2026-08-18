@@ -1,0 +1,27 @@
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: #032ebb;
+}
+
+html {
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-family: "Space Grotesk", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+header h1 {
+    text-align: right;
+    padding-right: 200px;
+    padding-bottom: 20px;
+}
+   
+#texto-sobre {
+    padding: 10px;
+}
