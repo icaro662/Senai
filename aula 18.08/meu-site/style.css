@@ -16,12 +16,62 @@ html {
     font-style: normal;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
 header h1 {
     text-align: right;
     padding-right: 200px;
     padding-bottom: 20px;
 }
    
-#texto-sobre {
-    padding: 10px;
+#main-table img {
+    border-radius: 50px;
+}
+
+#login-table {
+    margin-top: 100px;
+    margin-bottom: 50px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 10px;
+}
+
+#login-cell {
+    color: #000000;
+    border: none;
+}
+
+#login-cell fieldset {
+    border: none;
+    color: rgb(0, 0, 0);
+    height: 282px;
+    width: 282px;
+}
+
+#login-cell legend {
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+#field-info, #field-address {
+    width: 800px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+#field-course {
+    text-align: left;
+}
+
+#contatos-table {
+    border-color: red;
+    border: 10px;
+    border-radius: 8px;
 }
