@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <link rel="icon" href="./assets/senai-logo.png">
+        <link rel="stylesheet" href="./style.css">
+        <title>Registro | Senai</title>
+    </head>
+
+    <body>
+        <nav>
+            <table border="0" width="900" align="center">
+                <tr>
+                    <td>
+                        <header>
+                            <img src="./assets/senai-logo.png" height="89">
+                        </header>
+                    </td>
+                    <td align="center">
+                        <a href="./index.html"><strong>HOME</strong></a> |
+                        <a href="./sobre.html"><strong>QUEM SOMOS</strong></a> |
+                        <a href="./contatos.html"><strong>CONTATOS</strong></a> |
+                        <a href="./login.html"><strong>LOGIN</strong></a> |
+                        <a href="./register.html"><strong>INSCRIÇÃO</strong></a> 
+                    </td>
+                </tr>
+            </table>
+        </nav>
+
+        <main>
+            <table border="0" align="center" id="formulario-table">
+                <tr>
+                    <td>
+                        <form class="main-form">
+                            <fieldset id="dados-pessoais">
+                                <legend>Dados Pessoais</legend>
+
+                                <label for="nome">Nome Completo:</label><br>
+                                <input type="text" id="nome" name="nome" minlength="2" maxlength="100" required><br><br>
+
+                                <label for="cpf">CPF:</label><br>
+                                <input type="text" id="cpf" name="cpf" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" minlength="14" maxlength="14" placeholder="000.000.000-00" required><br><br>
+
+                                <label for="data-nascimento">Data de nascimento:</label><br>
+                                <input type="number" id="dia-nascimento" name="dia-nascimento" min="1" max="31" placeholder="dd" required> \
+                                <input type="number" id="mes-nascimento" name="mes-nascimento" min="1" max="12" placeholder="mm" required> \
+                                <input type="number" id="ano-nascimento" name="ano-nascimento" min="1950" max="2026" placeholder="yy" required>
+                                <br><br>
+
+                                <label for="sexo">Sexo:</label><br>
+                                <select id="sexo" name="sexo" required>
+                                    <option value="">Selecione uma opção</option>
+                                    <option value="homem-cis">Homem cis</option>
+                                    <option value="mulher-cis">Mulher cis</option>
+                                    <option value="nao-binario">Não binário</option>
+                                    <option value="nao-comentar-sexo">Prefiro não comentar</option>
+                                </select>
+                                <br><br>
+                                
+                                <label for="nome-mae">Nome da mãe:</label><br>
+                                <input type="text" id="nome-mae" name="nome-mae" minlength="2" maxlength="100" required><br><br>
+
+                                <label for="nome-pai-responsavel">Nome do pai ou responsável:</label><br>
+                                <input type="text" id="nome-pai-responsavel" name="nome-pai-responsavel" minlength="2" maxlength="100" placeholder="(Opcional)"><br><br>
+
+                                <label for="estado-civil">Estado civil:</label><br>
+                                <select id="estado-civil" name="estado-civil" title="(Opcional)">
+                                    <option value="">Selecione uma opção</option>
+                                    <option value="solteiro">Solteiro</option>
+                                    <option value="casado">Casado</option>
+                                    <option value="viuvo">Viúvo</option>
+                                </select>
+                                <br><br>
+                            </fieldset>
+                            <fieldset id="dados-contatos">
+                                <legend>Dados de Contato</legend>
+
+                                <label for="email">E-mail:</label><br>
+                                <input type="email" id="email" name="email" maxlength="254" placeholder="exemplo@gmail.com" required><br><br>
+                                
+                                <label for="telefone">Telefone:</label><br>
+                                <input type="tel" id="telefone" name="telefone" pattern="[0-9]{2} [0-9]{5}-[0-9]{4}" minlength="13" maxlength="13" placeholder="00 00000-0000" required><br><br>
+                                
+                                <label for="celular">Celular:</label><br>
+                                <input type="tel" id="celular" name="celular" pattern="[0-9]{2} [0-9]{5}-[0-9]{4}" minlength="13" maxlength="13" placeholder="00 000000-0000" required><br><br>
+
+                                <label for="whatsapp">Whatsapp:</label><br>
+                                <input type="tel" id="whatsapp" name="whatsapp" pattern="[0-9]{2} [0-9]{5}-[0-9]{4}" minlength="13" maxlength="13" placeholder="00 00000-0000 (Opcional)"><br><br>
+                            </fieldset>
+                            <fieldset id="endereco">
+                                <legend>Endereço</legend>
+
+                                <label for="cep">CEP:</label><br>
+                                <input type="text" id="cep" name="cep"
+                                pattern="[0-9]{5}-[0-9]{3}" minlength="9" maxlength="9" placeholder="00000-000" required><br><br>
+
+                                <label for="estado">Estado:</label><br>
+                                <input type="text" id="estado" name="estado" minlength="2" maxlength="2" pattern="[A-Z][A-Z]" required><br><br>
+
+                                <label for="cidade">Cidade:</label><br>
+                                <input type="text" id="cidade" name="cidade" minlength="10" maxlength="30" required><br><br>
+
+                                <label for="bairro">Bairro:</label><br>
+                                <input type="text" id="bairro" name="bairro" minlength="10" maxlength="30" required><br><br>
+                                
+                                <label for="rua">Rua:</label><br>
+                                <input type="text" id="rua" name="rua" minlength="10" maxlength="30" required>
+
+                                <label for="numero-casa">Número:</label> 
+                                <input type="number" id="numero-casa" name="numero-casa" size="3" min="1" required><br><br>
+
+                                <label for="complemento">Complemento:</label><br>
+                                <input type="text" id="complemento" name="complemento" placeholder="(Opcional)"><br><br>
+
+                            </fieldset>
+                            <fieldset id="informacoes-academicas">
+                                <legend>Informações acadêmicas</legend>
+
+                                <label for="curso">Curso pretendido:</label><br>
+                                <select id="curso" name="curso" required>
+                                    <option value="">Selecione um curso</option>
+                                    <option value="administracao">Administração</option>
+                                    <option value="analise-desenvolvimento-sistemas">Análise e Desenvolvimento de Sistemas</option>
+                                    <option value="contabilidade">Contabilidade</option>
+                                    <option value="design-grafico">Design Gráfico</option>
+                                    <option value="enfermagem">Enfermagem</option>
+                                    <option value="logistica">Logística</option>
+                                    <option value="marketing">Marketing</option>
+                                    <option value="recursos-humanos">Recursos Humanos</option>
+                                    <option value="redes-computadores">Redes de Computadores</option>
+                                    <option value="seguranca-trabalho">Segurança do Trabalho</option>
+                                </select><br><br>
+
+                                <label for="turno">Turno:</label><br>
+                                <select id="turno" name="turno" required>
+                                    <option value="">Selecione um turno</option>
+                                    <option value="manha">Manhã</option>
+                                    <option value="tarde">Tarde</option>
+                                    <option value="noite">Noite</option>
+                                </select><br><br>
+
+                                <label for="modalidade">Modalidade de ensino:</label><br>
+                                <select id="modalidade" name="modalidade" required>
+                                    <option value="">Selecione uma modalidade</option>
+                                    <option value="presencial">Presencial</option>
+                                    <option value="semi">Semi-presencial</option>
+                                    <option value="ead">EAD</option>
+                                </select><br><br>
+
+                                <label for="forma-ingresso">Forma de ingresso:</label><br>
+                                <select id="forma-ingresso" name="forma-ingresso" required>
+                                    <option value="">Selecione a forma de ingresso</option>
+                                    <option value="vestibular">Vestibular</option>
+                                    <option value="enem">Nota do ENEM</option>
+                                    <option value="transferencia">Transferência</option>
+                                    <option value="segunda-graduacao">Segunda graduação</option>
+                                    <option value="reingresso">Reingresso</option>
+                                </select><br><br>
+
+                                <label for="ano-semestre-ingresso">Ano/semestre de ingresso:</label><br>
+                                <select id="ano-semestre-ingresso" name="ano-semestre-ingresso" required>
+                                    <option value="">Selecione o período</option>
+                                    <option value="2026-1">2026.1</option>
+                                    <option value="2026-2">2026.2</option>
+                                    <option value="2027-1">2027.1</option>
+                                    <option value="2027-2">2027.2</option>
+                                    <option value="2028-1">2028.1</option>
+                                </select><br><br>
+                                
+                            </fieldset>
+                            <fieldset id="informacoes-adicionais">
+                                <legend>Informações adicionais</legend>
+
+                                <span>
+                                    <p>Possui algum conhecimento prévio?</p>
+                            
+                                    <input type="radio" id="sim" name="conhecimento-previo" value="sim" required>
+                                    <label for="sim-conhecimento-previo">Sim</label>
+
+                                    <input type="radio" id="nao" name="conhecimento-previo" value="nao">
+                                    <label for="nao-conhecimento-previo">Não</label><br><br>
+                                </span>
+                                
+
+                                <label for="como-conheceu-instituicao">Como conheceu a instituição?</label><br>
+                                <textarea id="como-conheceu-instituicao" name="como-conheceu-instituicao" placeholder="(Opcional)"></textarea><br><br>
+
+                                <label for="necessidades">Possui necessidades de atendimento específico?</label><br>
+                                <textarea id="necessidades" name="necessidades" required></textarea><br><br>
+
+                                <label for="obs-adicionais">Observações adicionais:</label><br>
+                                <textarea id="obs-adicionais" name="obs-adicionais" placeholder="(Opcional)"></textarea>
+
+                            </fieldset>
+                            <fieldset id="envio-documentos">
+                                <legend>Envio de documentos</legend>
+
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label">Foto 3x4</label>
+                                    <input class="form-control" type="file" id="formFile" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label">Documento de identificação:</label>
+                                    <input class="form-control" type="file" id="formFile" name="documento-id" accept=".pdf" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label">CPF:</label><br>
+                                    <input class="form-control" type="file" id="formFile" name="cpf" accept=".pdf" required>
+                                </div>
+                            
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label">Comprovante de residência:</label>
+                                    <input class="form-control" type="file" id="formFile" name="comprovante-residencia" accept=".pdf" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label">Certificado ou declaração escolar:</label>
+                                    <input class="form-control" type="file" id="formFile" name="certificado-escolar" accept=".pdf" required>
+                                </div>
+                            </fieldset>
+                            <fieldset id="termos-declaracoes">
+                                <legend>Termos e declarações</legend>
+
+                                <input type="checkbox" id="informacoes-verdadeiras" name="informacoes-verdadeiras" required>
+                                <label for="informacoes-verdadeiras">Confirmar que as informações fornecidas são verdadeiras</label><br>
+
+                                <input type="checkbox" id="termos-instituicao" name="termos-instituicao" required>
+                                <label for="termos-instituicao">Concordar com os termos da instituição</label><br>
+
+                                <input type="checkbox" id="tratamento-dados" name="tratamento-dados" required>
+                                <label for="tratamento-dados">Autorizar o tratamento dos dados para fins de matrícula</label><br>
+
+                                <input type="checkbox" id="comunicacoes-instituicao" name="comunicacoes-instituicao">
+                                <label for="comunicacoes-instituicao">Desejo receber comunicações da instituição (Opcional)</label>
+
+                            </fieldset>
+                            <br>
+                            <div id="buttons-div">
+                                <center>
+                                    <input type="submit" value="Enviar matrícula">
+                                    <input type="button" onclick="document.getElementsByClassName('main-form')[0].reset()" value="Limpar formulário">
+                                </center>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </main>
+
+        <footer>
+            <table border="0" width="900" align="center">
+                <tr>
+                    <td colspan="2" align="center">
+                        <h2>FAÇA PARTE DO NOSSO TIME!</h2>
+                        <form>
+                            <input type="submit" value="CLIQUE AQUI E SE INSCREVA-SE AGORA">
+                        </form>
+                        <h4>&copy Todos os Direitos Reservados</h4>
+                    </td>
+                </tr>
+            </table>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,140 @@
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: #032ebb;
+}
+
+html {
+    color: rgb(0, 0, 0);
+    font-family: "Space Grotesk", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+legend {
+    font-size: 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    color: rgb(0, 0, 0);
+}
+
+input, select, textarea {
+    border-radius: 5px;
+    margin: 5px;
+}
+
+header h1 {
+    text-align: right;
+    padding-right: 200px;
+    padding-bottom: 20px;
+}
+
+#footer-td, input {
+    height: 50px;
+    width: 200px;
+}
+
+#footer-td, h2, h4 {
+    font-size: 20px;
+    size: 1px;
+}
+   
+#main-table img {
+    border-radius: 50px;
+}
+
+#login-row {
+    border: none;
+}
+
+#login-cell{
+    border: none;
+}
+
+#login-table {
+    border: none;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+#login-form {
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+#login-cell fieldset {
+    border: none;
+    color: rgb(0, 0, 0);
+    height: 282px;
+    width: 282px;
+}
+
+#login-cell legend {
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+.main-form {
+    flex-direction: row;
+    margin: 50%;
+    margin-left: 2%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-bottom: 5px;
+    text-align: left;
+    width: 1000px;
+}
+
+#dados-pessoais {
+    padding: 8px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#dados-contatos {
+    padding: 8px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#endereco {
+    padding: 8px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#informacoes-academicas {
+    padding: 8px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#informacoes-adicionais {
+    padding: 8px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#envio-documentos {
+    padding: 8px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#termos-declaracoes {
+    padding: 8px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
