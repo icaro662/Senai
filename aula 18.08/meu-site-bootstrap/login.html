@@ -13,68 +13,36 @@
         <title>Login | Senai</title>
     </head>
 
-    <body>
-        <nav id="main-nav" class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <img src="./assets/senai-logo.png" height="60">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <div class="navbar-div">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbar-bar">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="./sobre.html">Sobre</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="./contatos.html">Contatos</a>
-                            </li>
-                                <a class="nav-link active" href="./login.html">Login</a>
-                            </li> 
-                            </li>
-                                <a class="nav-link active" href="./register.html">Registrar</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+    <body class="login-body">
+        <main class="login-main">
+            <div class="login-background-img-div">
+                <img id="background-jpeg" src="./assets/login-background.jpg" alt="Imagem de fundo da tela de login">
             </div>
-        </nav>
-
-        <main>
-            <table id="login-table" border="5" width="300" height="300" align="center">
-                <tr id="login-row">    
-                    <td id="login-cell">
-                        <form id="login-form">
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                <div id="emailHelp" class="form-text">Nunca compartilharemos suas informações pessoais.</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Senha</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-                    </td>
-                </tr>
-            </table>
+            <div class="login-form-div">
+                <form id="login-form">
+                    <img class="login-logo" src="./assets/senai-logo.png" alt="SENAI">
+                    <h1>Entrar</h1>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                        <div id="emailHelp" class="form-text">Nunca compartilharemos suas informações pessoais.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Senha</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" required>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                        <a href="#" style="text-decoration: none;">Esqueci a senha</a>
+                    </div>
+                </form>
+                <nav id="nav-card-login" class="card" aria-label="Navegação principal">
+                    <a href="./index.html">Home</a>
+                    <a href="./sobre.html">Sobre</a>
+                    <a href="./contatos.html">Contatos</a>
+                    <a href="./register.html">Registrar</a>
+                </nav>
+            </div>
         </main>
-
-        <footer>
-            <table border="0" width="900" align="center">
-                <tr>
-                    <td colspan="2" align="center" id="footer-td">
-                        <h2>FAÇA PARTE DO NOSSO TIME!</h2>
-                        <form>
-                            <div class="input-group mb-3">
-                                <button class="btn btn-outline-secondary" type="button" formaction="./register.html" id="button-addon1" value="CLIQUE AQUI E SE TORNE-SE UM ALUNO SENAI"></button>
-                            </div> 
-                        </form>
-                        <h4>&copy Todos os Direitos Reservados</h4>
-                    </td>
-                </tr>
-            </table>
-        </footer>
     </body>
 </html>
