@@ -5,34 +5,35 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
         <link rel="icon" href="./assets/senai-logo.png">
-        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="./style/index.css">
         <title>Home | Senai</title>
     </head>
 
     <body>
-        <nav id="main-nav" class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav id="main-nav" class="navbar navbar-expand-lg bg-body-tertiary border-bottom border-3 rounded-1">
             <div class="container-fluid">
                 <img src="./assets/senai-logo.png" height="60">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <div class="navbar-div">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbar-bar">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                                <a class="nav-link active anchor-tag" aria-current="page" href="./index.html">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="./sobre.html">Sobre</a>
+                                <a class="nav-link active anchor-tag" href="./sobre.html">Sobre</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="./contatos.html">Contatos</a>
+                                <a class="nav-link active anchor-tag" href="./contatos.html">Contatos</a>
                             </li>
-                                <a class="nav-link active" href="./login.html">Login</a>
+                            <li class="nav-item" id="login-anchor">
+                                <a class="nav-link active anchor-tag" href="./login.html">Login</a>
                             </li> 
-                            </li>
-                                <a class="nav-link active" href="./register.html">Registrar</a>
+                            <li class="nav-item" id="register-anchor">
+                                <a class="nav-link active anchor-tag" href="./register.html">Registrar</a>
                             </li>
                         </ul>
                     </div>
@@ -41,71 +42,124 @@
         </nav>
 
         <main class="index-main">
-            <table border="0" width="800" align="center" id="main-table">
-                <tr>
-                    <td colspan="2">
-                        <img src="./assets/banner.jpg.jpeg">
-                    </td>
-                </tr>
+            <header class="course-hero">
+                <div class="hero-content">
+                    <p class="eyebrow">FORMAÇÃO PROFISSIONAL SENAI</p>
+                    <h1>Curso de HTML5</h1>
+                    <p class="hero-lead">Construa páginas que fazem sentido, funcionam em qualquer tela e estão prontas para a web.</p>
+                    <a class="hero-action" href="./register.html">Quero me inscrever</a>
+                </div>
+            </header>
 
-                <tr>
-                    <td colspan="2">
-                        <h1 align="center">Curso de HTML</h1>
+            <div class="course-content">
+                <section class="course-introduction" aria-labelledby="introduction-title">
+                    <div>
+                        <p class="section-kicker">O ponto de partida</p>
+                        <h2 id="introduction-title">Aprenda a falar a língua da web</h2>
+                    </div>
+                    <p>HTML5 é a base de toda experiência digital. Neste curso, você aprende a transformar ideias em páginas organizadas, acessíveis e fáceis de evoluir, começando pela estrutura e chegando a projetos completos.</p>
+                </section>
 
-                        <section>
-                            <h2>Aprenda a criar páginas para a web</h2>
-                            <p align="justify">
-                            O curso de HTML apresenta os fundamentos usados para estruturar páginas da internet. Durante a formação, o estudante aprende a organizar textos, imagens, links, tabelas e formulários com uma marcação clara e semântica.
-                            </p>
-                            <p align="justify">
-                            Entre os principais conteúdos estão a estrutura básica de um documento HTML, títulos e parágrafos, listas, links, imagens, tabelas, formulários e elementos semânticos. O curso também mostra como criar páginas acessíveis e preparadas para receber estilos CSS.
-                            </p>
-                        </section>
+                <section class="learning-section" aria-labelledby="learning-title">
+                    <div class="section-heading">
+                        <p class="section-kicker">Na prática</p>
+                        <h2 id="learning-title">O que você vai criar</h2>
+                    </div>
+                    <div class="learning-grid">
+                        <article class="learning-card">
+                            <span class="card-number">01</span>
+                            <h3>Crie sites responsivos</h3>
+                            <p>Estruture páginas que se adaptam ao celular, tablet e computador sem perder clareza.</p>
+                        </article>
+                        <article class="learning-card">
+                            <span class="card-number">02</span>
+                            <h3>Aprenda semântica</h3>
+                            <p>Use cada elemento HTML no lugar certo para melhorar leitura, acessibilidade e manutenção.</p>
+                        </article>
+                        <article class="learning-card">
+                            <span class="card-number">03</span>
+                            <h3>Organize formulários</h3>
+                            <p>Monte campos, rótulos e validações que tornam a interação mais simples para todos.</p>
+                        </article>
+                    </div>
+                </section>
 
-                        <section>
-                            <h2>O que você poderá desenvolver</h2>
-                            <table border="0" width="700" align="center">
-                                <tr>
-                                    <th>Habilidade</th>
-                                </tr>
-                                <tr>
-                                    <td>Estruturar páginas usando elementos HTML</td>
-                                </tr>
-                                <tr>
-                                    <td>Criar formulários com campos, rótulos e validações</td>
-                                </tr>
-                                <tr>
-                                    <td>Organizar conteúdo com tags semânticas</td>
-                                </tr>
-                                <tr>
-                                    <td>Preparar páginas para integração com CSS e JavaScript</td>
-                                </tr>
-                            </table>
-                        </section>
+                <section class="technical-section" aria-labelledby="technical-title">
+                    <div class="section-heading">
+                        <p class="section-kicker">Visão geral</p>
+                        <h2 id="technical-title">Informações técnicas</h2>
+                    </div>
+                    <div class="technical-layout">
+                        <div class="course-stat">
+                            <strong>60</strong>
+                            <span>horas de formação</span>
+                            <p>Tempo para aprender, praticar e montar seu primeiro projeto com acompanhamento.</p>
+                        </div>
+                        <div class="disciplines">
+                            <div class="discipline-item">
+                                <span>01</span>
+                                <div>
+                                    <h3>Fundamentos da web</h3>
+                                    <p>Entenda como páginas, navegadores e documentos HTML trabalham juntos.</p>
+                                </div>
+                            </div>
+                            <div class="discipline-item">
+                                <span>02</span>
+                                <div>
+                                    <h3>HTML5 semântico</h3>
+                                    <p>Aprenda tags, hierarquia de conteúdo e boas práticas de acessibilidade.</p>
+                                </div>
+                            </div>
+                            <div class="discipline-item">
+                                <span>03</span>
+                                <div>
+                                    <h3>Projeto de página</h3>
+                                    <p>Coloque o conhecimento em ação criando uma interface completa e responsiva.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-                        <section>
-                            <h2>Serviços do SENAI</h2>
-                            <p align="justify">
-                            Além dos cursos, o SENAI oferece serviços tecnológicos, consultorias, testes e soluções para apoiar empresas, melhorar processos e incentivar a inovação na indústria.
-                            </p>
-                        </section>
-                    </td>
-                </tr>
-            </table>
+                <section class="faq-section" aria-labelledby="faq-title">
+                    <div class="section-heading">
+                        <p class="section-kicker">Antes de começar</p>
+                        <h2 id="faq-title">Perguntas frequentes</h2>
+                    </div>
+                    <div class="faq-list">
+                        <details>
+                            <summary>Preciso saber programar?</summary>
+                            <p>Não. O curso começa pela base e conduz você passo a passo pela construção de uma página HTML5.</p>
+                        </details>
+                        <details>
+                            <summary>Vou aprender apenas HTML?</summary>
+                            <p>O foco é HTML5, mas você também entenderá como a marcação se conecta ao CSS e prepara o terreno para o JavaScript.</p>
+                        </details>
+                        <details>
+                            <summary>O projeto final pode entrar no meu portfólio?</summary>
+                            <p>Sim. Ao final, você terá uma página estruturada para continuar estilizando e apresentar como parte dos seus primeiros trabalhos.</p>
+                        </details>
+                        <details>
+                            <summary>Como faço minha inscrição?</summary>
+                            <p>Acesse a página de registro pelo botão de inscrição e preencha seus dados para iniciar o processo.</p>
+                        </details>
+                    </div>
+                </section>
+            </div>
         </main>
 
-        <footer>
-            <table border="0" width="900" align="center">
-                <tr>
-                    <td colspan="2" align="center">
-                        <h2>FAÇA PARTE DO NOSSO TIME!</h2>
-                        <form>
-                            <input type="submit" formaction="./register.html" value="CLIQUE AQUI E SE TORNE-SE UM ALUNO SENAI">
-                        </form>
-                        <h4>&copy Todos os Direitos Reservados</h4>
-                    </td>
-                </tr>
-            </table>
+        <footer class="site-footer border-top border-3 rounded-1">
+            <div class="footer-container">
+                <img class="footer-logo" src="./assets/senai-logo.png" alt="SENAI">
+                <nav class="footer-links" aria-label="Navegação do rodapé">
+                    <a href="./index.html">Home</a>
+                    <a href="./sobre.html">Sobre</a>
+                    <a href="./contatos.html">Contatos</a>
+                    <a href="./login.html">Login</a>
+                    <a href="./register.html">Registrar</a>
+                </nav>
+                <p class="footer-rights">&copy; Todos os direitos reservados</p>
+            </div>
         </footer>
     </body>
 </html>

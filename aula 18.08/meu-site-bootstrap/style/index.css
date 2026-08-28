@@ -1,0 +1,441 @@
+html {
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-size: 17px;
+    font-style: normal;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+}
+
+body {
+    background: #f5f1ea;
+}
+
+.index-main {
+    flex: 1;
+    color: #17242a;
+}
+
+.course-hero {
+    position: relative;
+    z-index: 0;
+    min-height: 480px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    isolation: isolate;
+    color: #ffffff;
+    background-image: url("../assets/banner-clean.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.course-hero::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    content: "";
+    background: rgba(18, 35, 42, 0.68);
+}
+
+.hero-content {
+    width: min(100%, 1180px);
+    margin: 0 auto;
+    padding: 96px 48px 72px;
+}
+
+.eyebrow,
+.section-kicker {
+    margin: 0 0 12px;
+    color: #e37b42;
+    font-family: "Quicksand", sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.hero-content h1 {
+    max-width: 760px;
+    margin: 0;
+    font-family: "Quicksand", sans-serif;
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    font-weight: 700;
+    line-height: 0.95;
+}
+
+.hero-lead {
+    max-width: 620px;
+    margin: 24px 0 32px;
+    color: #edf1eb;
+    font-size: clamp(1.1rem, 2vw, 1.45rem);
+    line-height: 1.45;
+}
+
+.hero-action {
+    display: inline-block;
+    padding: 13px 22px;
+    border: 2px solid #e37b42;
+    color: #ffffff;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    background: #e37b42;
+}
+
+.hero-action:hover {
+    color: #ffffff;
+    background: #c95f2b;
+    border-color: #c95f2b;
+}
+
+.course-content {
+    width: min(100%, 1180px);
+    margin: 0 auto;
+    padding: 88px 48px 112px;
+}
+
+.course-introduction,
+.technical-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 72px;
+    align-items: start;
+}
+
+.course-introduction {
+    padding-bottom: 88px;
+    border-bottom: 1px solid #c8cbc4;
+}
+
+.course-content h2 {
+    margin: 0;
+    color: #17242a;
+    font-family: "Quicksand", sans-serif;
+    font-size: clamp(2rem, 4vw, 3.3rem);
+    font-weight: 700;
+    line-height: 1.05;
+}
+
+.course-introduction > p {
+    max-width: 620px;
+    margin: 0;
+    color: #4d5b5e;
+    font-size: 1.18rem;
+    line-height: 1.7;
+}
+
+.learning-section,
+.technical-section,
+.faq-section {
+    padding-top: 88px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: end;
+    margin-bottom: 36px;
+}
+
+.section-heading .section-kicker {
+    margin-bottom: 0;
+}
+
+.learning-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.learning-card {
+    min-height: 250px;
+    padding: 26px;
+    border-top: 4px solid #e37b42;
+    background: #ffffff;
+}
+
+.card-number {
+    display: block;
+    margin-bottom: 42px;
+    color: #e37b42;
+    font-family: "Quicksand", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.learning-card h3,
+.discipline-item h3 {
+    margin: 0 0 10px;
+    color: #17242a;
+    font-family: "Quicksand", sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.learning-card p,
+.discipline-item p,
+.course-stat p {
+    margin: 0;
+    color: #5e6a6b;
+    line-height: 1.55;
+}
+
+.technical-section {
+    border-top: 1px solid #c8cbc4;
+}
+
+.course-stat {
+    padding: 34px 0;
+    border-top: 6px solid #17242a;
+}
+
+.course-stat strong {
+    display: block;
+    color: #17242a;
+    font-family: "Quicksand", sans-serif;
+    font-size: clamp(4rem, 8vw, 7rem);
+    font-weight: 700;
+    line-height: 0.9;
+}
+
+.course-stat span {
+    display: block;
+    margin: 14px 0 22px;
+    color: #e37b42;
+    font-family: "Quicksand", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.disciplines {
+    border-top: 1px solid #c8cbc4;
+}
+
+.discipline-item {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 18px;
+    padding: 22px 0;
+    border-bottom: 1px solid #c8cbc4;
+}
+
+.discipline-item > span {
+    color: #e37b42;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+}
+
+.faq-section {
+    border-top: 1px solid #c8cbc4;
+}
+
+.faq-list {
+    border-top: 1px solid #17242a;
+}
+
+.faq-list details {
+    border-bottom: 1px solid #c8cbc4;
+}
+
+.faq-list summary {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px 0;
+    color: #17242a;
+    cursor: pointer;
+    font-family: "Quicksand", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    list-style: none;
+}
+
+.faq-list summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-list summary::after {
+    content: "+";
+    color: #e37b42;
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+.faq-list details[open] summary::after {
+    content: "-";
+}
+
+.faq-list details p {
+    max-width: 720px;
+    margin: -4px 48px 22px 0;
+    color: #5e6a6b;
+    line-height: 1.6;
+}
+
+#main-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    background: rgb(238, 233, 223) !important;
+    height: 65px;
+}
+
+#main-nav,
+#main-nav *,
+.site-footer,
+.site-footer * {
+    font-family: "Quicksand", sans-serif !important;
+    font-weight: 700 !important;
+}
+
+#navbar-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.navbar-div {
+    width: 100%;
+}
+
+#login-anchor {
+    width: 80px;
+    height: 40px;
+    padding: 10px;
+    margin-left: auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #d55b2b;
+    border-radius:8px;
+}
+
+#register-anchor {
+    padding: 10px;
+    width: 105px;
+    height: 40px;
+    margin-left: 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius:8px;
+    background: #d55b2b;
+}
+
+.anchor-tag {
+    border-radius: 10px;
+    margin: 0;
+    color: rgb(0, 0, 0) !important;
+}
+
+.site-footer {
+    margin-top: auto;
+    background: rgb(238, 233, 223);
+}
+
+.footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 32px;
+}
+
+.footer-logo {
+    width: 72px;
+    height: auto;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.footer-links a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-rights {
+    margin: 0;
+    color: #3f3f3f;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+    .course-hero {
+        min-height: 430px;
+    }
+
+    .hero-content {
+        padding: 72px 22px 48px;
+    }
+
+    .course-content {
+        padding: 60px 22px 76px;
+    }
+
+    .course-introduction,
+    .technical-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .course-introduction {
+        padding-bottom: 60px;
+    }
+
+    .learning-section,
+    .technical-section,
+    .faq-section {
+        padding-top: 60px;
+    }
+
+    .section-heading {
+        display: block;
+        margin-bottom: 28px;
+    }
+
+    .section-heading .section-kicker {
+        margin-bottom: 12px;
+    }
+
+    .learning-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .learning-card {
+        min-height: 0;
+    }
+
+    .card-number {
+        margin-bottom: 28px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 14px;
+        padding: 24px 16px;
+    }
+}

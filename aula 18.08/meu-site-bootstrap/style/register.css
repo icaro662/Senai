@@ -1,0 +1,306 @@
+html {
+    color: rgb(0, 0, 0);
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-size: 17px;
+    font-style: normal;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+}
+
+#main-nav {
+    position: sticky;
+    top: 0;
+    background: rgb(238, 233, 223) !important;
+    height: 65px;
+}
+
+#main-nav,
+#main-nav *,
+.site-footer,
+.site-footer *,
+.main-form,
+.main-form * {
+    font-weight: 700 !important;
+    font-family: "Quicksand", sans-serif !important;
+}
+
+#main-nav,
+#main-nav *,
+.site-footer,
+.site-footer *,
+.main-form,
+.main-form * {
+    font-weight: 600 !important;
+}
+
+#navbar-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.navbar-div {
+    width: 100%;
+}
+
+#login-anchor {
+    width: 80px;
+    height: 40px;
+    padding: 10px;
+    margin-left: auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #d55b2b;
+    border-radius: 8px;
+}
+
+#register-anchor {
+    width: 105px;
+    height: 40px;
+    padding: 10px;
+    margin-left: 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: #d55b2b;
+}
+
+.anchor-tag {
+    border-radius: 10px;
+    padding: 0;
+    margin: 0;
+    color: rgb(0, 0, 0) !important;
+}
+
+.register-main {
+    flex: 1;
+    padding: 32px 16px 48px;
+    background: linear-gradient(135deg, #f4f7fb 0%, #e8eef6 100%);
+}
+
+.register-page .navbar {
+    border-bottom: 1px solid rgba(20, 87, 179, 0.18);
+}
+
+.register-nav-logo {
+    width: 58px;
+    height: 42px;
+    object-fit: contain;
+}
+
+.register-header {
+    max-width: 760px;
+    margin: 0 auto 20px;
+    color: #20252b;
+}
+
+.register-eyebrow {
+    margin-bottom: 6px;
+    color: rgb(20, 87, 179);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.register-header h1 {
+    margin: 0 0 8px;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.register-header p:last-child {
+    margin: 0;
+    color: #596675;
+}
+
+#formulario-table {
+    width: min(100%, 760px);
+    margin: 0 auto;
+}
+
+.register-main .main-form {
+    width: 100%;
+    margin: 0;
+    padding: 18px;
+    border-radius: 10px;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 600;
+    background-color: #ffffff;
+    box-shadow: 0 14px 32px rgba(25, 35, 45, 0.12);
+}
+
+.register-main fieldset {
+    border-color: #d9e0e8;
+    border-radius: 8px;
+    background-color: #fbfcfe;
+}
+
+.register-main legend {
+    float: none;
+    width: auto;
+    padding: 0 8px;
+    color: rgb(20, 87, 179);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.register-main label,
+.register-main p {
+    color: #20252b;
+}
+
+.register-main .form-text {
+    color: #596675;
+}
+
+.register-main input:not([type="radio"]):not([type="checkbox"]),
+.register-main select,
+.register-main textarea {
+    width: min(100%, 340px);
+    max-width: 340px;
+    display: block;
+    margin-left: 0;
+    padding: 8px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    color: #20252b;
+    background-color: #ffffff;
+}
+
+.birth-date-fields {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.birth-date-fields input {
+    flex: 0 0 auto;
+    width: 64px !important;
+    max-width: 64px;
+    padding: 6px 4px;
+    font-size: 0.85rem;
+}
+
+#dia-nascimento,
+#mes-nascimento {
+    width: 64px !important;
+}
+
+#ano-nascimento {
+    width: 82px !important;
+    max-width: 82px;
+}
+
+#numero-casa {
+    width: 64px;
+}
+
+.register-main input::placeholder,
+.register-main textarea::placeholder {
+    color: #8290a0;
+}
+
+.register-main input:focus,
+.register-main select:focus,
+.register-main textarea:focus {
+    border-color: #5aa9df;
+    box-shadow: 0 0 0 0.2rem rgba(20, 87, 179, 0.15);
+}
+
+#buttons-div input {
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: rgb(20, 87, 179);
+    cursor: pointer;
+}
+
+.register-page .form-check-input {
+    border-color: #9aaabd;
+    background-color: #ffffff;
+}
+
+.register-page .form-check-input:checked {
+    border-color: rgb(20, 87, 179);
+    background-color: rgb(20, 87, 179);
+}
+
+.site-footer {
+    margin-top: auto;
+    background: rgb(238, 233, 223);
+}
+
+.footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 32px;
+}
+
+.footer-logo {
+    width: 72px;
+    height: auto;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.footer-links a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-rights {
+    margin: 0;
+    color: #3f3f3f;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+    .register-main {
+        padding: 36px 12px 48px;
+    }
+
+    .register-main .main-form {
+        padding: 16px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 14px;
+        padding: 24px 16px;
+    }
+
+    .register-main input:not([type="radio"]):not([type="checkbox"]),
+    .register-main select,
+    .register-main textarea {
+        width: 100%;
+        max-width: 340px;
+    }
+}
