@@ -8,13 +8,13 @@
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-        <link rel="icon" href="./assets/senai-logo.png">
+        <link rel="icon" href="./assets/senai-icone.jpeg">
         <link rel="stylesheet" href="./style/register.css">
         <title>Registro | Senai</title>
     </head>
 
     <body class="register-page">
-        <nav id="main-nav" class="navbar navbar-expand-lg bg-body-tertiary border-bottom border-3 rounded-1">
+        <nav id="main-nav" class="navbar navbar-expand-lg bg-body-tertiary border-bottom border-3">
             <div class="container-fluid">
                 <img src="./assets/senai-logo.png" height="60">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -256,12 +256,10 @@
 
                             </fieldset>
                             <br>
-                            <div id="buttons-div">
-                                <center>
-                                    <input class="btn btn-primary" type="submit" value="Enviar matrícula">
-                                    <input class="btn btn-outline-light" type="button" onclick="document.getElementsByClassName('main-form')[0].reset()" value="Limpar formulário">
-                                </center>
-                            </div>
+                    <div id="buttons-div">
+                        <input class="btn btn-outline-light" id="limpar-input" type="button" onclick="document.getElementsByClassName('main-form')[0].reset()" value="Limpar formulário">
+                        <input class="btn btn-primary" id="enviar-input" type="submit" value="Enviar matrícula">
+                    </div>
                 </form>
             </div>
         </main>

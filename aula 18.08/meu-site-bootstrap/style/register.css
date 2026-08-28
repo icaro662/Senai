@@ -15,6 +15,10 @@ body {
     font-weight: 400;
 }
 
+.main-form {
+    border-left: 5px solid #d55b2b;
+}
+
 #main-nav {
     position: sticky;
     top: 0;
@@ -51,6 +55,24 @@ body {
 
 .navbar-div {
     width: 100%;
+}
+
+#buttons-div {
+    display: flex;
+    flex-direction: row;
+}
+
+#buttons-div input {
+    background-color: #d55b2b !important;
+    height: 50px;
+    width: 180px !important;
+    margin: 20px;
+}
+
+#enviar-input {
+    flex: 1;
+    width: 100px !important;
+    margin-left: 160px !important;
 }
 
 #login-anchor {
