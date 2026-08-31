@@ -9,40 +9,61 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
-    <title>Aula - CSS</title>
+    <title>Tofu Corporation</title>
   </head>
+
   <body>
     <nav>
         <header>
-            <h1>Lol</h1>
+            <h1>Bem-vindo</h1>
+            <div class="nav-content">
+                <div class="servicos-dropdown">
+                    <button class="dropbtn">Serviços</button>
+                    <div class="servicos-content">
+                        <a href="#">Análise de Dinossauros</a>
+                        <a href="#">Consultoria Divina</a>
+                        <a href="#">Cirurgia Chinesa</a>
+                        <a href="#">Conserto de Submarinos</a>
+                        <a href="#">Treinamento de Felinos</a>
+                        <a href="#">Personal de Porcos</a>
+                        <a href="#">Perfume de Ventiladores</a>
+                        <a href="#">Lambedor de Livros</a>
+                    </div>
+                </div>
+                <a href="#">Contatos</a>
+                <a href="#">Sobre</a>
+            </div>
         </header>
     </nav>
+
     <main>
-        <form>
-            <fieldset>
-                <legend>Dados Pessoais</legend>
+        <div class="form-div">
+            <form>
+                <fieldset>
+                    <legend>Dados Pessoais</legend>
 
-                <label for="nome">Nome</label>
-                <input type="text" name="nome">
+                    <label for="nome">Nome</label>
+                    <input type="text" name="nome" pattern="[A-Za-zÀ-ÿ\s]+" title="Digite apenas letras e espaços" required>
 
-                <label for="data-nascimento">Data de Nascimento</label>
-                <input type="date" name="data-nascimento">
+                    <label for="data-nascimento">Data de Nascimento</label>
+                    <input type="date" name="data-nascimento" required>
 
-                <label for="cpf">CPF</label>
-                <input type="text">
+                    <label for="cpf">CPF</label>
+                    <input type="text" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="000.000.000-00" required>
 
-                <label for="cpf">RG</label>
-                <input type="text">
+                    <label for="rg">RG</label>
+                    <input type="text" name="rg" pattern="\d{2}\.\d{3}\.\d{3}" placeholder="00.000.000" required>
 
-                <label for="cpf">E-mail</label>
-                <input type="email" name="email">
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" placeholder="example@gmail.com" required>
 
-                <label for="cpf">LinkedIn</label>
-                <input type="url" name="linkedin">
+                    <label for="linkedin">LinkedIn</label>
+                    <input type="url" name="linkedin">
 
-                <input type="submit" name="enviar" value="Enviar">
-            </fieldset>
-        </form>
+                    <input type="submit" name="enviar" value="Enviar">
+                </fieldset>
+            </form>
+        </div>
     </main>
   </body>
 </html>

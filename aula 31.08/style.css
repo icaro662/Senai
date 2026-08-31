@@ -1,51 +1,111 @@
-* {    
-    --header-text: rgb(0, 0, 0);;
-    --general-text: rgb(255, 238, 0);
-}
-
 html {
-    height: 727px;
-    border: 20px solid transparent; 
+    width: 100%;
+    height: 100%;
     padding: 0px;
-    border-image: url(./assets/borderRetro.jpg) 30 round;
     font-family: "Grenze Gotisch", serif;
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
-    background-image: linear-gradient(to bottom, #f8b49588, #f6727f93, #c06c84f3, #6c5b7c), url(./assets/avocado.jpg);
 }
 
 body {
-    height: fit-content;
+    background-image: linear-gradient(to bottom, #f8b595, #f67280, #c06c84, #6c5b7c);
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0px;
+    height: 100%;
+    width: 100%;
 }
 
 main {
-    max-height: 595px;
-    text-align: center;
-    border: 10px inset #6c5b7c;
-    border-top: 10px groove rgb(115, 255, 0);
-    border-bottom: 10px groove rgb(115, 255, 0);
-    border-radius: 10px;
-    margin-top: 40px;
-    margin-bottom: 0px;
-    width: 600px;
-    height: 800px;
-    padding: 10px;
-    background: linear-gradient(to bottom, #f8b595, #f67280, #c06c84, #6c5b7c);
+    margin: 20px 0px 20px 0px;
+    padding: 20px;
+    width: 90%;
+    height: fit-content;
+    border-image: url(./assets/borderRetro.jpg) 30 / 19px round;
 }
 
 nav {
+    box-sizing: border-box;
+    padding: 0px 50px 0px 50px;
+    color: rgb(0, 0, 0);
     top: 0;
     height: 50px;
-    width: 1000px;
-    border-bottom: 10px solid #6c5b7c;
+    width: 100vw;
+    max-width: 100%;
+    background-color: #ffb997;
+    border-bottom: 5px inset #4a4949;
+}
+
+.nav-content {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+header {
+    gap: 20px;
+    height: 50px;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+}
+
+header a {
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+    margin-top: 8px;
+    margin-left: 15px;
+}
+
+.servicos-dropdown {
+    position: relative;
+}
+
+.servicos-content {
+    display: none;
+    position: absolute;
+    padding: 10px;
+    padding-top: 20px;
+    height: fit-content;
+    width: fit-content;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    background-color: #daa187;
+    gap: 20px;
+}
+
+.servicos-dropdown:hover .servicos-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.servicos-content a {
+    row-gap: 20px;
+    margin: 0;
+    font-size: 15px;
+    display: block;
+    text-decoration: none;
+    width: 100px;
+    color: black;
+}
+
+.dropbtn {
+    font-family: "Grenze Gotisch", serif;
+    background-color: #ffb997;
+    color: rgb(0, 0, 0);
+    padding: 0px;
+    margin-top: 3px;
+    margin-left: 10px;
+    height: 40px;
+    font-size: 22px;
+    border: none;
+    cursor: pointer;
 }
 
 form {
+    height: fit-content;
     padding: 10px;
 }
 
@@ -54,10 +114,11 @@ fieldset {
     border: none;
     display: flex;
     flex-direction: column;
+    height: fit-content;
 }
 
 fieldset legend {
-    margin-left: 198px;
+   text-align: center;
 }
 
 input {
