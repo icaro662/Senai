@@ -21,7 +21,7 @@ body {
 main {
     margin: 20px 0px 20px 0px;
     padding: 20px;
-    width: 90%;
+    width: 50%;
     height: fit-content;
     border-image: url(./assets/borderRetro.jpg) 30 / 19px round;
 }

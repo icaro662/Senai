@@ -1,0 +1,130 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: "Lexend Peta", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-repeat: repeat-x;
+    background-color: rgb(46, 44, 44);
+}
+
+nav {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 15px;
+    box-sizing: border-box;
+    position: sticky;
+    margin: 0px;
+    width: 100%; 
+    height: 70px;
+    aspect-ratio: 16 / 9;
+    padding: 5px 0px 5px 0px;
+    text-align: right;
+    background: linear-gradient(to right, #dff0ea60,  #95adbe62, #574f7d8c, #4f3a65c7);
+    background-size: 100%;
+    color: rgb(255, 255, 255);
+    border-bottom: 2px groove lightcoral;
+}
+
+.nav-bar {
+    text-align: right;
+    position: sticky;
+    box-sizing: border-box; 
+}
+
+.dropbtn {
+    background-image: url(./assets/menu_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    background-color: transparent;
+    border: transparent;
+    margin-top: 8px;
+    margin-right: 5px;
+    height: 50px;
+    width: 60px;
+    align-self: right;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #413f3f;
+    border-top: 2px groove lightcoral;
+    right: 0;            
+    left: auto;              
+    padding: 10px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    width: 160px;
+    height: fit-content;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    text-align: right;
+}
+
+.dropdown-content a {
+    color:rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: 8px;
+}
+
+.dropdown-content a:hover {
+    transition: 0.4s;
+    color: #db5f29;
+}
+
+.dropdown-div {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-div:hover .dropdown-content {
+    margin-top: 2px;
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-header {
+    text-align: center;
+    padding-top: 5px;
+    font-size: 0.8rem;
+}
+
+.nav-content {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 15px;
+    margin-top: 20px;
+    margin-right: 5px;
+    text-align: center;
+    height: fit-content;
+}
+
+.nav-content a {
+    color:rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.nav-content a:hover {
+    transition: 0.4s;
+    color: #db5f29;
+}
+
+nav h1 {
+    margin: 0px;
+}
+
+nav h3 {
+    margin: 0px;
+}
