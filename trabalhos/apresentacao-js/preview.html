@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Apresentação sobre Interação e Usabilidade no Front-End utilizando JavaScript">
+  <title>JavaScript — Interação e Usabilidade</title>
+
+  <!-- Bootstrap 5 via CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-2: #0c1b2e;
+      --card: rgba(255,255,255,.06);
+      --border: rgba(255,255,255,.12);
+      --text: #eef5ff;
+      --muted: #a9b8ca;
+      --accent: #63e6be;
+      --accent-2: #74c0fc;
+      --danger: #ff8787;
+      --warning: #ffd43b;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 78px; }
+
+    body {
+      background:
+        radial-gradient(circle at 15% 10%, rgba(116,192,252,.13), transparent 28%),
+        radial-gradient(circle at 85% 25%, rgba(99,230,190,.10), transparent 25%),
+        var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .navbar {
+      background: rgba(7,17,31,.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar .nav-link { color: var(--muted); }
+    .navbar .nav-link:hover, .navbar .nav-link.active { color: var(--accent); }
+
+    .hero, section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 110px 0 70px;
+    }
+
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(180deg, rgba(7,17,31,.25), rgba(7,17,31,.95)),
+        radial-gradient(circle at 50% 45%, rgba(99,230,190,.12), transparent 35%);
+    }
+
+    .section-number {
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: .85rem;
+    }
+
+    .display-title {
+      font-weight: 800;
+      letter-spacing: -.045em;
+      line-height: 1.02;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .lead { color: var(--muted); }
+
+    .glass {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.22);
+    }
+
+    .concept-card {
+      height: 100%;
+      padding: 28px;
+      transition: transform .25s ease, border-color .25s ease;
+    }
+
+    .concept-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(99,230,190,.4);
+    }
+
+    .icon-box {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: rgba(99,230,190,.12);
+      color: var(--accent);
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+    }
+
+    .code-collapse {
+      transition: height .35s ease;
+    }
+
+    .code-toggle {
+      text-decoration: none;
+    }
+
+    .code-card {
+      position: relative;
+    }
+
+    .code-card > .code-toggle,
+    .code-card .code-toggle {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+    }
+
+    .code-box {
+      background: #050b13;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: .9rem;
+      overflow-x: auto;
+      color: #d9e7f7;
+    }
+
+    .demo-code-box {
+      max-height: 360px;
+      overflow: auto;
+      scrollbar-color: var(--accent-2) #050b13;
+    }
+
+    .code-key { color: #74c0fc; }
+    .code-string { color: #8ce99a; }
+    .code-function { color: #ffd43b; }
+
+    .demo-area {
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      gap: 15px;
+      padding: 30px;
+    }
+
+    .demo-title {
+      font-size: clamp(1.7rem, 4vw, 3rem);
+      font-weight: 800;
+      transition: .3s;
+    }
+
+    .event-box {
+      min-height: 170px;
+      display: grid;
+      place-items: center;
+      border: 2px dashed rgba(116,192,252,.4);
+      border-radius: 20px;
+      padding: 25px;
+      transition: .2s;
+      user-select: none;
+    }
+
+    .event-box.over {
+      transform: scale(1.02);
+      border-color: var(--accent);
+      background: rgba(99,230,190,.08);
+    }
+
+    .counter-number {
+      font-size: 4rem;
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    .usability-good {
+      border: 1px solid rgba(99,230,190,.4);
+      background: rgba(99,230,190,.06);
+    }
+
+    .usability-bad {
+      border: 1px solid rgba(255,135,135,.35);
+      background: rgba(255,135,135,.06);
+    }
+
+    .bad-ui button {
+      font-size: .65rem;
+      padding: 2px 4px;
+    }
+
+    .bad-ui .tiny { font-size: .55rem; }
+    .good-ui .btn { min-height: 48px; }
+
+    .principle {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+
+    .principle i { color: var(--accent); }
+
+    .timeline-step {
+      position: relative;
+      padding-left: 35px;
+      margin-bottom: 24px;
+    }
+
+    .timeline-step::before {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 5px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(99,230,190,.1);
+    }
+
+    .timeline-step::after {
+      content: "";
+      position: absolute;
+      left: 12px;
+      top: 25px;
+      width: 2px;
+      height: calc(100% + 10px);
+      background: var(--border);
+    }
+
+    .timeline-step:last-child::after { display: none; }
+
+    .progress-wrap {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 3px;
+      z-index: 2000;
+    }
+
+    #progressBar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+    .slide-controls {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 1030;
+      display: flex;
+      gap: 8px;
+    }
+
+    .floating-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: rgba(7,17,31,.88);
+      color: var(--text);
+    }
+
+    .floating-btn:hover { color: var(--accent); }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(99,230,190,.1);
+      color: var(--accent);
+      font-size: .85rem;
+      font-weight: 700;
+    }
+
+    .mini-label {
+      color: var(--muted);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 50px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .members-section {
+      padding: 70px 0;
+      border-top: 1px solid var(--border);
+      background: rgba(5,11,19,.35);
+    }
+
+    .member-card {
+      height: 100%;
+      min-height: 330px;
+      padding: 44px 32px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform .25s ease, border-color .25s ease;
+    }
+
+    .member-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(99,230,190,.4);
+    }
+
+    .member-avatar {
+      width: 92px;
+      height: 92px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 18px;
+      border: 1px solid rgba(99,230,190,.35);
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(99,230,190,.2), rgba(116,192,252,.2));
+      color: var(--accent);
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
+
+    .member-card .btn {
+      color: var(--accent-2);
+    }
+
+    .member-card .btn:hover {
+      color: var(--accent);
+    }
+
+    .member-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      width: 100%;
+      margin-top: 6px;
+    }
+
+    .member-links .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+    }
+
+    .quiz-section {
+      background: rgba(12,27,46,.35);
+    }
+
+    .quiz-carousel {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    .quiz-slide {
+      min-height: 500px;
+      padding: 58px 96px 82px;
+    }
+
+    .quiz-slide h3 {
+      margin-bottom: 2.5rem !important;
+    }
+
+    .quiz-options {
+      row-gap: 18px !important;
+    }
+
+    .quiz-option {
+      width: 100%;
+      min-height: 52px;
+      text-align: left;
+      white-space: normal;
+      color: var(--text);
+      border-color: var(--border);
+      background: rgba(255,255,255,.04);
+    }
+
+    .quiz-option:hover,
+    .quiz-option:focus-visible {
+      color: var(--text);
+      border-color: var(--accent);
+      background: rgba(99,230,190,.1);
+    }
+
+    .quiz-option.correct {
+      color: #d3f9d8;
+      border-color: #69db7c;
+      background: rgba(64,192,87,.2);
+    }
+
+    .quiz-option.incorrect {
+      color: #ffe3e3;
+      border-color: var(--danger);
+      background: rgba(255,135,135,.16);
+    }
+
+    .quiz-option:disabled {
+      opacity: 1;
+    }
+
+    .quiz-feedback {
+      min-height: 64px;
+      margin-top: 2rem !important;
+    }
+
+    @media (max-width: 575px) {
+      .quiz-slide {
+        min-height: 540px;
+        padding: 40px 36px 70px;
+      }
+    }
+
+    @media (max-width: 991px) {
+      .hero, section { min-height: auto; }
+      .slide-controls { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="progress-wrap"><div id="progressBar"></div></div>
+
+  <!-- NAVEGAÇÃO -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-white" href="#inicio">
+        <i class="bi bi-braces text-info"></i> JS<span class="text-info">.</span>
+      </a>
+
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="#conceito">Conceito</a></li>
+          <li class="nav-item"><a class="nav-link" href="#interacao">Interação</a></li>
+          <li class="nav-item"><a class="nav-link" href="#eventos">Eventos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#dom">DOM</a></li>
+          <li class="nav-item"><a class="nav-link" href="#demo">Demo</a></li>
+          <li class="nav-item"><a class="nav-link" href="#usabilidade">Usabilidade</a></li>
+          <li class="nav-item"><a class="nav-link" href="#conclusao">Final</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CAPA -->
+  <header id="inicio" class="hero">
+    <div class="container">
+      <div class="row justify-content-center text-center">
+        <div class="col-lg-9">
+          <h1 class="display-title display-1 mb-4">
+            Interação e<br>
+            <span class="gradient-text">Usabilidade</span>
+          </h1>
+          <p class="lead fs-4 mx-auto mb-5">
+            Como o JavaScript transforma uma página estática em uma experiência web interativa, funcional e fácil de utilizar.
+          </p>
+
+          <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="#conceito" class="btn btn-success btn-lg px-4">
+              Começar apresentação <i class="bi bi-arrow-down ms-2"></i>
+            </a>
+            <button class="btn btn-outline-light btn-lg px-4" onclick="modoApresentacao()">
+              <i class="bi bi-easel2 me-2"></i> Modo apresentação
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 01 -->
+  <section id="conceito">
+    <div class="container">
+      <div class="section-number mb-3">01 — O que é JavaScript?</div>
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <div class="left-column-01"> 
+            <h2 class="display-4 fw-bold mb-4">A linguagem que dá <span class="gradient-text">vida</span> à página.</h2>
+            <p class="lead">
+              JavaScript é uma linguagem de programação muito utilizada no desenvolvimento web.
+              No Front-End, ela permite criar comportamentos, responder às ações do usuário e atualizar a página sem precisar recarregá-la.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="glass p-4">
+            <div class="row g-3">
+              <div class="col-md-4">
+                <div class="concept-card glass">
+                  <div class="icon-box"><i class="bi bi-diagram-3"></i></div>
+                  <h5>HTML</h5>
+                  <p class="text-secondary mb-0">Define títulos, textos, imagens, formulários e outros elementos.</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="concept-card glass">
+                  <div class="icon-box"><i class="bi bi-palette"></i></div>
+                  <h5>CSS</h5>
+                  <p class="text-secondary mb-0">Define cores, tamanhos, espaçamentos e layout.</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="concept-card glass">
+                  <div class="icon-box"><i class="bi bi-code-slash"></i></div>
+                  <h5>JavaScript</h5>
+                  <p class="text-secondary mb-0">Cria lógica, eventos, validações e interações.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section id="interacao">
+    <div class="container">
+      <div class="section-number mb-3">02 — Interação com o usuário</div>
+      <div class="row mb-5">
+        <div class="col-lg-8">
+          <h2 class="display-5 fw-bold">O usuário faz algo. <span class="gradient-text">A página responde.</span></h2>
+          <p class="lead">É aí que o JavaScript entra em ação.</p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="glass concept-card code-card">
+            <div class="icon-box"><i class="bi bi-hand-index-thumb"></i></div>
+            <h4>Botões</h4>
+            <p class="text-secondary">Executam ações quando o usuário interage.</p>
+            <button class="btn btn-outline-success" id="btn-code" onclick="mostrarMensagem()">Testar botão</button>
+            <button class="btn btn-sm btn-link text-info code-toggle" id="btn-code" data-bs-toggle="collapse" data-bs-target="#codigoBotao">Mostrar código</button>
+            <div id="codigoBotao" class="collapse code-collapse mt-2">
+              <div class="code-box small">button.addEventListener(<span class="code-string">"click"</span>, () =&gt; {<br>&nbsp;&nbsp;mostrarMensagem();<br>});</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="glass concept-card code-card">
+            <div class="icon-box"><i class="bi bi-list"></i></div>
+            <h4>Menus</h4>
+            <p class="text-secondary">Podem abrir, fechar, expandir e mudar de conteúdo.</p>
+            <button class="btn btn-outline-info" onclick="alternarMenu()">Abrir/fechar</button>
+            <div id="menuDemo" class="mt-3 d-none">
+              <div class="list-group">
+                <div class="list-group-item bg-dark text-light border-secondary">Início</div>
+                <div class="list-group-item bg-dark text-light border-secondary">Produtos</div>
+                <div class="list-group-item bg-dark text-light border-secondary">Contato</div>
+              </div>
+            </div>
+            <button class="btn btn-sm btn-link text-info code-toggle" id="btn-code" data-bs-toggle="collapse" data-bs-target="#codigoMenu">Mostrar código</button>
+            <div id="codigoMenu" class="collapse code-collapse mt-2">
+              <div class="code-box small">menu.classList.toggle(<span class="code-string">"d-none"</span>);</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="glass concept-card code-card">
+            <div class="icon-box"><i class="bi bi-check2-circle"></i></div>
+            <h4>Validação</h4>
+            <p class="text-secondary">Ajuda a identificar dados ausentes ou inválidos.</p>
+            <input id="nomeDemo" class="form-control bg-dark text-white border-secondary mb-2" placeholder="Digite seu nome">
+            <button class="btn btn-outline-warning" onclick="validarNome()">Validar</button>
+            <div id="resultadoValidacao" class="small mt-2"></div>
+            <button class="btn btn-sm btn-link text-info code-toggle" data-bs-toggle="collapse" data-bs-target="#codigoValidacao">Mostrar código</button>
+            <div id="codigoValidacao" class="collapse code-collapse mt-2">
+              <div class="code-box small">if (nome.value.trim() === <span class="code-string">""</span>) {<br>&nbsp;&nbsp;// mostrar erro<br>}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="glass concept-card code-card">
+            <div class="icon-box"><i class="bi bi-bell"></i></div>
+            <h4>Alertas</h4>
+            <p class="text-secondary">Fornecem feedback sobre alguma ação.</p>
+            <button class="btn btn-outline-light" onclick="mostrarAlerta()">Mostrar alerta</button>
+            <button class="btn btn-sm btn-link text-info code-toggle" data-bs-toggle="collapse" data-bs-target="#codigoAlerta">Mostrar código</button>
+            <div id="codigoAlerta" class="collapse code-collapse mt-2">
+              <div class="code-box small"><span class="code-function">alert</span>(<span class="code-string">"Olá!"</span>);</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="glass concept-card code-card">
+            <div class="icon-box"><i class="bi bi-pencil-square"></i></div>
+            <h4>Conteúdo</h4>
+            <p class="text-secondary">JavaScript pode alterar textos, imagens e classes.</p>
+            <button class="btn btn-outline-success" onclick="alterarCard()">Alterar conteúdo</button>
+            <p id="cardTexto" class="mt-3 mb-0">Este texto pode mudar.</p>
+            <button class="btn btn-sm btn-link text-info code-toggle" data-bs-toggle="collapse" data-bs-target="#codigoConteudo">Mostrar código</button>
+            <div id="codigoConteudo" class="collapse code-collapse mt-2">
+              <div class="code-box small">element.textContent = <span class="code-string">"Novo conteúdo"</span>;</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="glass concept-card code-card">
+            <div class="icon-box"><i class="bi bi-mouse"></i></div>
+            <button class="btn btn-sm btn-link text-info code-toggle px-0" data-bs-toggle="collapse" data-bs-target="#codigoEventos">Mostrar código</button>
+            <h4>Eventos</h4>
+            <p class="text-secondary">Clique, teclado, mouse, formulário e muito mais.</p>
+            <span class="badge text-bg-secondary">click</span>
+            <span class="badge text-bg-secondary">input</span>
+            <span class="badge text-bg-secondary">mouseenter</span>
+            <div id="codigoEventos" class="collapse code-collapse mt-2">
+              <div class="code-box small">element.addEventListener(<span class="code-string">"click"</span>, funcao);</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section id="eventos">
+    <div class="container">
+      <div class="section-number mb-3">03 — Eventos</div>
+      <h2 class="display-5 fw-bold mb-4">JavaScript <span class="gradient-text">escuta</span> as ações.</h2>
+
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="glass p-4 h-100">
+            <h4><i class="bi bi-mouse2 text-info me-2"></i> Clique</h4>
+            <p class="text-secondary">Clique no botão e observe o contador.</p>
+            <div class="text-center py-3">
+              <div id="contador" class="counter-number">0</div>
+              <small class="text-secondary">cliques</small>
+              <div class="mt-3">
+                <button class="btn btn-outline-light" onclick="alterarContador(-1)">−</button>
+                <button class="btn btn-success" onclick="alterarContador(1)">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="glass p-4 h-100">
+            <h4><i class="bi bi-keyboard text-info me-2"></i> Teclado</h4>
+            <p class="text-secondary">Digite no campo e o JavaScript acompanha o evento.</p>
+            <input id="teclado" class="form-control bg-dark text-white border-secondary" placeholder="Digite alguma coisa...">
+            <div class="mt-3 p-3 rounded bg-black">
+              <small class="text-secondary">Você digitou:</small>
+              <div id="saidaTeclado" class="fw-bold mt-1">—</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="glass p-4 h-100">
+            <h4><i class="bi bi-cursor text-info me-2"></i> Mouse</h4>
+            <p class="text-secondary">Passe o mouse sobre a área abaixo.</p>
+            <div id="areaMouse" class="event-box">
+              <div>
+                <i class="bi bi-arrows-move fs-1"></i>
+                <div class="mt-2">Passe o mouse aqui</div>
+                <small id="statusMouse" class="text-secondary">Aguardando...</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass p-4 mt-5 code-card">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+          <div>
+            <div class="mini-label">Código + demonstração</div>
+            <h5 class="mb-0 mt-1">Evento de clique com console.log()</h5>
+          </div>
+          <button class="btn btn-sm btn-outline-info code-toggle" data-bs-toggle="collapse" data-bs-target="#codigoConsole">
+            Mostrar código
+          </button>
+        </div>
+
+        <div id="codigoConsole" class="collapse code-collapse mt-3">
+          <div class="code-box">
+            <span class="code-key">const</span> botao = document.<span class="code-function">getElementById</span>(<span class="code-string">"botaoConsole"</span>);<br><br>
+            botao.<span class="code-function">addEventListener</span>(<span class="code-string">"click"</span>, () =&gt; {<br>
+            &nbsp;&nbsp;<span class="code-key">console</span>.<span class="code-function">log</span>(<span class="code-string">"O usuário clicou!"</span>);<br>
+            });
+          </div>
+        </div>
+
+        <div class="row align-items-center g-3 mt-2">
+          <div class="col-md-5">
+            <button id="botaoConsole" class="btn btn-success btn-lg w-100">
+              <i class="bi bi-terminal me-2"></i>Executar console.log()
+            </button>
+          </div>
+          <div class="col-md-7">
+            <div class="code-box mb-0">
+              <div class="text-secondary mb-2">// Console simulado</div>
+              <div id="consoleSaida"><span class="text-secondary">&gt; Aguardando clique...</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 DOM -->
+  <section id="dom">
+    <div class="container">
+      <div class="section-number mb-3">04 — DOM</div>
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <h2 class="display-5 fw-bold">O DOM é a <span class="gradient-text">ponte</span> entre HTML e JavaScript.</h2>
+          <p class="lead">
+            DOM significa <strong>Document Object Model</strong>. É a representação da página HTML que permite ao JavaScript acessar e modificar seus elementos.
+          </p>
+
+          <div class="glass p-4 mt-4">
+            <div class="d-flex align-items-center justify-content-between">
+              <span>HTML</span><i class="bi bi-arrow-down"></i>
+              <span>DOM</span><i class="bi bi-arrow-down"></i>
+              <span>JavaScript</span>
+            </div>
+            <hr class="border-secondary">
+            <p class="text-secondary mb-0">O usuário interage → o evento acontece → JavaScript modifica o DOM → a interface muda.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="code-box mb-3">
+            <span class="code-key">&lt;h1</span> <span class="code-function">id</span>=<span class="code-string">"titulo"</span><span class="code-key">&gt;</span>Olá!<span class="code-key">&lt;/h1&gt;</span>
+            <br><br>
+            document.<span class="code-function">getElementById</span>(<span class="code-string">"titulo"</span>).innerHTML = <span class="code-string">"Novo título"</span>;
+          </div>
+
+          <div class="glass demo-area">
+            <h3 id="tituloDOM" class="demo-title">Olá!</h3>
+            <button class="btn btn-success" onclick="alterarTituloDOM()">Clique aqui</button>
+            <button class="btn btn-sm btn-outline-light" onclick="resetarTituloDOM()">Resetar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 DEMO -->
+  <section id="demo">
+    <div class="container">
+      <div class="section-number mb-3">05 — Demonstração prática</div>
+      <h2 class="display-5 fw-bold mb-3">Uma pequena página pode demonstrar <span class="gradient-text">tudo isso.</span></h2>
+      <p class="lead mb-5">Interação + DOM + eventos + validação + feedback.</p>
+
+      <div class="row g-4 align-items-stretch">
+        <div class="col-lg-7">
+          <div class="glass p-4 p-md-5">
+            <div class="text-center mb-4">
+              <span class="pill">Demonstração ao vivo</span>
+              <h3 class="fw-bold mt-3">Cadastro rápido</h3>
+              <p class="text-secondary">Preencha o formulário e veja o JavaScript trabalhando.</p>
+            </div>
+
+            <form id="formDemo" novalidate>
+              <div class="mb-3">
+                <label class="form-label">Nome</label>
+                <input id="formNome" class="form-control form-control-lg bg-dark text-white border-secondary" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">E-mail</label>
+                <input id="formEmail" type="email" class="form-control form-control-lg bg-dark text-white border-secondary" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Senha</label>
+                <input id="formSenha" type="password" class="form-control form-control-lg bg-dark text-white border-secondary" minlength="8" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Confirmar senha</label>
+                <input id="formConfirmacao" type="password" class="form-control form-control-lg bg-dark text-white border-secondary" minlength="8" required>
+              </div>
+              <button class="btn btn-success btn-lg w-100" type="submit">
+                Enviar formulário
+              </button>
+            </form>
+
+            <div id="formFeedback" class="mt-4"></div>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="glass p-4 h-100">
+            <div class="mini-label mb-2">Código da demonstração</div>
+            <h3 class="h5 fw-bold mb-3">HTML + JavaScript</h3>
+
+            <div class="code-box small mb-3">
+              <div class="code-key mb-2">&lt;form id="formDemo"&gt;</div>
+              <span class="code-key">&lt;input</span> <span class="code-function">id</span>=<span class="code-string">"formNome"</span><span class="code-key">&gt;</span><br>
+              <span class="code-key">&lt;input</span> <span class="code-function">id</span>=<span class="code-string">"formEmail"</span><span class="code-key">&gt;</span><br>
+              <span class="code-key">&lt;input</span> <span class="code-function">type</span>=<span class="code-string">"password"</span> <span class="code-function">id</span>=<span class="code-string">"formSenha"</span><span class="code-key">&gt;</span><br>
+              <span class="code-key">&lt;input</span> <span class="code-function">type</span>=<span class="code-string">"password"</span> <span class="code-function">id</span>=<span class="code-string">"formConfirmacao"</span><span class="code-key">&gt;</span><br>
+              <span class="code-key">&lt;button</span> <span class="code-function">type</span>=<span class="code-string">"submit"</span><span class="code-key">&gt;</span>Enviar<span class="code-key">&lt;/button&gt;</span><br>
+              <span class="code-key">&lt;/form&gt;</span>
+            </div>
+
+            <div class="code-box demo-code-box small mb-0">
+              <span class="code-key">document</span>.<span class="code-function">getElementById</span>(<span class="code-string">"formDemo"</span>).<span class="code-function">addEventListener</span>(<span class="code-string">"submit"</span>, <span class="code-key">function</span> (event) {<br>
+              &nbsp;&nbsp;event.<span class="code-function">preventDefault</span>();<br><br>
+              &nbsp;&nbsp;<span class="code-key">const</span> nome = document.<span class="code-function">getElementById</span>(<span class="code-string">"formNome"</span>);<br>
+              &nbsp;&nbsp;<span class="code-key">const</span> email = document.<span class="code-function">getElementById</span>(<span class="code-string">"formEmail"</span>);<br>
+              &nbsp;&nbsp;<span class="code-key">const</span> senha = document.<span class="code-function">getElementById</span>(<span class="code-string">"formSenha"</span>);<br>
+              &nbsp;&nbsp;<span class="code-key">const</span> confirmacao = document.<span class="code-function">getElementById</span>(<span class="code-string">"formConfirmacao"</span>);<br>
+              &nbsp;&nbsp;<span class="code-key">const</span> feedback = document.<span class="code-function">getElementById</span>(<span class="code-string">"formFeedback"</span>);<br><br>
+              &nbsp;&nbsp;<span class="code-key">const</span> mostrarErro = (mensagem) =&gt; {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;feedback.innerHTML = mensagem;<br>
+              &nbsp;&nbsp;};<br><br>
+              &nbsp;&nbsp;<span class="code-key">if</span> (nome.value.trim().length &lt; 3) {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;mostrarErro(<span class="code-string">"Digite um nome com pelo menos 3 caracteres."</span>);<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;nome.<span class="code-function">focus</span>();<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">return</span>;<br>
+              &nbsp;&nbsp;}<br><br>
+              &nbsp;&nbsp;<span class="code-key">if</span> (!email.validity.valid) {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;mostrarErro(<span class="code-string">"Digite um e-mail válido."</span>);<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">return</span>;<br>
+              &nbsp;&nbsp;}<br><br>
+              &nbsp;&nbsp;<span class="code-key">const</span> senhaForte = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;<br><br>
+              &nbsp;&nbsp;<span class="code-key">if</span> (!senhaForte.<span class="code-function">test</span>(senha.value)) {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;mostrarErro(<span class="code-string">"A senha deve ter 8 caracteres, letra maiúscula, minúscula e número."</span>);<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;senha.<span class="code-function">focus</span>();<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">return</span>;<br>
+              &nbsp;&nbsp;}<br><br>
+              &nbsp;&nbsp;<span class="code-key">if</span> (senha.value !== confirmacao.value) {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;mostrarErro(<span class="code-string">"A confirmação de senha não coincide."</span>);<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;confirmacao.<span class="code-function">focus</span>();<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">return</span>;<br>
+              &nbsp;&nbsp;}<br><br>
+              &nbsp;&nbsp;feedback.innerHTML = <span class="code-string">"Cadastro realizado com sucesso!"</span>;<br>
+              });
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3 mt-4 text-center">
+        <div class="col-md-3"><div class="glass p-3"><i class="bi bi-mouse text-info fs-3"></i><br><small>Evento</small></div></div>
+        <div class="col-md-3"><div class="glass p-3"><i class="bi bi-diagram-3 text-info fs-3"></i><br><small>DOM</small></div></div>
+        <div class="col-md-3"><div class="glass p-3"><i class="bi bi-check-circle text-info fs-3"></i><br><small>Validação</small></div></div>
+        <div class="col-md-3"><div class="glass p-3"><i class="bi bi-chat-left-text text-info fs-3"></i><br><small>Feedback</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 USABILIDADE -->
+  <section id="usabilidade">
+    <div class="container">
+      <div class="section-number mb-3">06 — Usabilidade</div>
+      <div class="row align-items-center g-5">
+        <div class="col-lg-5">
+          <h2 class="display-5 fw-bold">Uma página bonita é necessariamente <span class="gradient-text">fácil de utilizar?</span></h2>
+          <p class="lead">
+            Não. Uma boa interface precisa ser bonita, mas principalmente clara, previsível, acessível e eficiente para o usuário.
+          </p>
+
+          <div class="glass p-4">
+            <div class="principle"><i class="bi bi-compass"></i><span>Facilidade de navegação</span></div>
+            <div class="principle"><i class="bi bi-eye"></i><span>Clareza das informações</span></div>
+            <div class="principle"><i class="bi bi-hand-index"></i><span>Botões fáceis de identificar</span></div>
+            <div class="principle"><i class="bi bi-fonts"></i><span>Textos legíveis</span></div>
+            <div class="principle"><i class="bi bi-chat-square-text"></i><span>Feedback para o usuário</span></div>
+            <div class="principle"><i class="bi bi-phone"></i><span>Responsividade</span></div>
+            <div class="principle"><i class="bi bi-universal-access"></i><span>Acessibilidade</span></div>
+            <div class="principle mb-0"><i class="bi bi-shield-check"></i><span>Prevenção de erros</span></div>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <p class="mini-label mb-3 text-center">Qual interface apresenta melhor usabilidade?</p>
+          <div class="row g-4">
+            <!-- Interface A -->
+            <div class="col-md-6">
+              <div class="glass usability-bad p-4 bad-ui h-100">
+                <div class="d-flex justify-content-between mb-3">
+                  <span class="badge text-bg-danger">Interface A</span>
+                  <i class="bi bi-question-circle text-danger"></i>
+                </div>
+                <div class="tiny mb-3">MENU &nbsp; início produtos contato ajuda configurações comprar entrar sair</div>
+                <h2 class="tiny">OFERTA IMPERDÍVEL!!!</h2>
+                <p class="tiny">Clique aqui para continuar, talvez seja este botão. Informações importantes misturadas com outras informações.</p>
+                <div class="d-flex gap-1 flex-wrap">
+                  <button class="btn btn-danger">OK</button>
+                  <button class="btn btn-secondary">Clique</button>
+                  <button class="btn btn-warning">Continuar</button>
+                </div>
+                <p class="tiny mt-4 mb-0">Texto pequeno • pouco contraste • excesso de opções</p>
+              </div>
+            </div>
+
+            <!-- Interface B -->
+            <div class="col-md-6">
+              <div class="glass usability-good p-4 good-ui h-100">
+                <div class="d-flex justify-content-between mb-4">
+                  <span class="badge text-bg-success">Interface B</span>
+                  <i class="bi bi-check-circle text-success"></i>
+                </div>
+                <h4 class="fw-bold">Finalizar cadastro</h4>
+                <p class="text-secondary">Preencha os dados abaixo para continuar.</p>
+                <label class="form-label">Nome</label>
+                <input class="form-control bg-dark text-white border-secondary mb-3" placeholder="Seu nome">
+                <button id="botaoInterfaceB" class="btn btn-success w-100" type="button" onclick="acaoInterfaceB()">Continuar</button><div id="feedbackInterfaceB" class="small mt-3 text-success"></div>
+                <small class="text-secondary d-block mt-3">✓ Ação clara &nbsp; ✓ Texto legível</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass p-4 mt-4 text-center">
+            <h5 class="fw-bold">Pergunta para a turma</h5>
+            <p class="text-secondary mb-3">Qual interface vocês prefeririam utilizar? Por quê?</p>
+            <button class="btn btn-outline-danger me-2" onclick="votarUsabilidade('A')">A — Confusa</button>
+            <button class="btn btn-outline-success" onclick="votarUsabilidade('B')">B — Organizada</button>
+            <div id="votoResultado" class="mt-3 fw-bold"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section id="conclusao">
+    <div class="container text-center">
+      <div class="section-number mb-3">07 — Conclusão</div>
+      <h2 class="display-2 display-title mb-4">A web não é apenas<br><span class="gradient-text">aparência.</span></h2>
+      <p class="lead fs-4 mx-auto" style="max-width: 760px;">
+        Uma boa experiência combina estrutura, design, comportamento e usabilidade.
+      </p>
+
+      <div class="row g-4 justify-content-center mt-4">
+        <div class="col-md-3">
+          <div class="glass p-4 h-100">
+            <div class="fs-1">🏗️</div>
+            <h5 class="mt-3">HTML</h5>
+            <p class="text-secondary mb-0">Estrutura</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="glass p-4 h-100">
+            <div class="fs-1">🎨</div>
+            <h5 class="mt-3">CSS</h5>
+            <p class="text-secondary mb-0">Aparência</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="glass p-4 h-100">
+            <div class="fs-1">⚡</div>
+            <h5 class="mt-3">JavaScript</h5>
+            <p class="text-secondary mb-0">Comportamento</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="glass p-4 h-100">
+            <div class="fs-1">🧭</div>
+            <h5 class="mt-3">Usabilidade</h5>
+            <p class="text-secondary mb-0">Experiência</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-5">
+        <button class="btn btn-success btn-lg px-5" onclick="voltarInicio()">
+          <i class="bi bi-arrow-up me-2"></i> Voltar ao início
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 QUIZ -->
+  <section id="quiz" class="quiz-section" aria-labelledby="quiz-titulo">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="section-number mb-3">08 — Quiz</div>
+        <h2 id="quiz-titulo" class="display-5 display-title">Teste seus conhecimentos de <span class="gradient-text">JavaScript.</span></h2>
+        <p class="lead">Responda às perguntas e confira a explicação.</p>
+      </div>
+
+      <div id="quizCarousel" class="carousel slide quiz-carousel" data-bs-interval="false">
+        <div id="quizSlides" class="carousel-inner glass"></div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#quizCarousel" data-bs-slide="prev" aria-label="Pergunta anterior">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#quizCarousel" data-bs-slide="next" aria-label="Próxima pergunta">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+        <div id="quizIndicators" class="carousel-indicators"></div>
+      </div>
+
+      <div id="quizResultado" class="text-center mt-4 fw-bold" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="members-section" aria-labelledby="membros-titulo">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="section-number mb-3">Membros da apresentação
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-sm-6 col-xl-3">
+          <article class="glass member-card">
+            <div class="member-avatar">M1</div>
+            <h3 class="h5 mb-2">Carlos</h3>
+            <div style="margin-top: 50px;" class="member-links">
+              <a href="#" class="btn btn-link btn-sm text-decoration-none" aria-label="GitHub de Carlos"><i class="bi bi-github me-1"></i>GitHub</a>
+              <a href="#" class="btn btn-link btn-sm text-decoration-none" aria-label="LinkedIn de Carlos"><i class="bi bi-linkedin me-1"></i>LinkedIn</a>
+            </div>
+          </article>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+          <article class="glass member-card">
+            <div class="member-avatar">M2</div>
+            <h3 class="h5 mb-2">Eduardo</h3>
+            <div style="margin-top: 50px;" class="member-links">
+              <a href="#" class="btn btn-link btn-sm text-decoration-none" aria-label="GitHub de Eduardo"><i class="bi bi-github me-1"></i>GitHub</a>
+              <a href="#" class="btn btn-link btn-sm text-decoration-none" aria-label="LinkedIn de Eduardo"><i class="bi bi-linkedin me-1"></i>LinkedIn</a>
+            </div>
+          </article>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+          <article class="glass member-card">
+            <div class="member-avatar">M3</div>
+            <h3 class="h5 mb-2">Ícaro</h3>
+            <div style="margin-top: 50px;" class="member-links">
+              <a href="#" class="btn btn-link btn-sm text-decoration-none" aria-label="GitHub de Ícaro"><i class="bi bi-github me-1"></i>GitHub</a>
+              <a href="#" class="btn btn-link btn-sm text-decoration-none" aria-label="LinkedIn de Ícaro"><i class="bi bi-linkedin me-1"></i>LinkedIn</a>
+            </div>
+          </article>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+          <article class="glass member-card">
+            <div class="member-avatar">M4</div>
+            <h3 class="h5 mb-2">Leandro</h3>
+            <div style="margin-top: 50px;" class="member-links">
+              <a href="#" class="btn btn-link btn-sm text-decoration-none" aria-label="GitHub de Leandro"><i class="bi bi-github me-1"></i>GitHub</a>
+              <a href="#" class="btn btn-link btn-sm text-decoration-none" aria-label="LinkedIn de Leandro"><i class="bi bi-linkedin me-1"></i>LinkedIn</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Controles de apresentação -->
+  <div class="slide-controls">
+    <button class="floating-btn" onclick="irSecao(-1)" title="Seção anterior">
+      <i class="bi bi-chevron-left"></i>
+    </button>
+    <button class="floating-btn" onclick="irSecao(1)" title="Próxima seção">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="perguntas.js"></script>
+
+  <script>
+    // =========================================================
+    // INTERAÇÕES DA APRESENTAÇÃO
+    // =========================================================
+
+    // 1. Alertas / botões
+    function mostrarMensagem() {
+      const mensagem = document.createElement("div");
+      mensagem.className = "alert alert-success position-fixed top-0 start-50 translate-middle-x mt-5 shadow-lg";
+      mensagem.style.zIndex = "3000";
+      mensagem.innerHTML = '<i class="bi bi-check-circle me-2"></i> O JavaScript respondeu ao clique!';
+      document.body.appendChild(mensagem);
+
+      setTimeout(() => mensagem.remove(), 2500);
+    }
+
+    function mostrarAlerta() {
+      alert("Olá! Este é um alerta executado pelo JavaScript.");
+    }
+
+    // 2. Menu
+    function alternarMenu() {
+      document.getElementById("menuDemo").classList.toggle("d-none");
+    }
+
+    // 3. Validação simples
+    function validarNome() {
+      const input = document.getElementById("nomeDemo");
+      const resultado = document.getElementById("resultadoValidacao");
+
+      if (input.value.trim() === "") {
+        resultado.className = "small mt-2 text-danger";
+        resultado.innerHTML = '<i class="bi bi-x-circle"></i> Digite seu nome.';
+        input.focus();
+      } else {
+        resultado.className = "small mt-2 text-success";
+        resultado.innerHTML = '<i class="bi bi-check-circle"></i> Nome válido!';
+      }
+    }
+
+    // 4. Alteração de conteúdo
+    function alterarCard() {
+      const texto = document.getElementById("cardTexto");
+      texto.textContent = "O JavaScript alterou este conteúdo através do DOM!";
+      texto.classList.add("text-success", "fw-bold");
+    }
+
+    // 5. Contador
+    let contador = 0;
+
+    function alterarContador(valor) {
+      contador += valor;
+      document.getElementById("contador").textContent = contador;
+    }
+
+    // 6. Evento de teclado
+    document.getElementById("teclado").addEventListener("input", function () {
+      document.getElementById("saidaTeclado").textContent = this.value || "—";
+    });
+
+    // 7. Eventos do mouse
+    const areaMouse = document.getElementById("areaMouse");
+    const statusMouse = document.getElementById("statusMouse");
+
+    areaMouse.addEventListener("mouseenter", () => {
+      areaMouse.classList.add("over");
+      statusMouse.textContent = "Mouse detectado!";
+    });
+
+    areaMouse.addEventListener("mouseleave", () => {
+      areaMouse.classList.remove("over");
+      statusMouse.textContent = "Aguardando...";
+    });
+
+    // 8. DOM — exemplo principal
+    function alterarTituloDOM() {
+      document.getElementById("tituloDOM").innerHTML =
+        "Texto alterado pelo JavaScript!";
+    }
+
+    function resetarTituloDOM() {
+      document.getElementById("tituloDOM").innerHTML = "Olá!";
+    }
+
+    // 9. Formulário com validação
+    document.getElementById("formDemo").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const nome = document.getElementById("formNome");
+      const email = document.getElementById("formEmail");
+      const senha = document.getElementById("formSenha");
+      const confirmacao = document.getElementById("formConfirmacao");
+      const feedback = document.getElementById("formFeedback");
+
+      const mostrarErro = (mensagem) => {
+        feedback.innerHTML = `
+          <div class="alert alert-danger">
+            <i class="bi bi-exclamation-triangle me-2"></i>
+            ${mensagem}
+          </div>`;
+      };
+
+      if (nome.value.trim().length < 3) {
+        mostrarErro("Digite um nome com pelo menos 3 caracteres.");
+        nome.focus();
+        return;
+      }
+
+      if (!email.validity.valid) {
+        feedback.innerHTML = `
+          <div class="alert alert-warning">
+            <i class="bi bi-envelope-exclamation me-2"></i>
+            Digite um e-mail válido.
+          </div>`;
+        return;
+      }
+
+      const senhaForte = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+      if (!senhaForte.test(senha.value)) {
+        mostrarErro("A senha deve ter 8 caracteres, letra maiúscula, minúscula e número.");
+        senha.focus();
+        return;
+      }
+
+      if (senha.value !== confirmacao.value) {
+        mostrarErro("A confirmação de senha não coincide.");
+        confirmacao.focus();
+        return;
+      }
+
+      feedback.innerHTML = `
+        <div class="alert alert-success">
+          <i class="bi bi-check-circle me-2"></i>
+          Cadastro realizado com sucesso! O JavaScript validou os dados e alterou o DOM.
+        </div>`;
+    });
+
+    // Demonstração funcional de console.log()
+    document.getElementById("botaoConsole").addEventListener("click", function () {
+      const mensagem = "O usuário clicou!";
+      console.log(mensagem);
+
+      const saida = document.getElementById("consoleSaida");
+      saida.innerHTML = `<span class="text-success">&gt; ${mensagem}</span>`;
+    });
+
+    // Interação da Interface B
+    function acaoInterfaceB() {
+      const feedback = document.getElementById("feedbackInterfaceB");
+      const botao = document.getElementById("botaoInterfaceB");
+
+      feedback.innerHTML = '<i class="bi bi-check-circle me-1"></i> Ação realizada com sucesso!';
+      botao.innerHTML = '<i class="bi bi-check2 me-2"></i>Concluído';
+      botao.classList.remove("btn-success");
+      botao.classList.add("btn-outline-success");
+
+      setTimeout(() => {
+        botao.innerHTML = "Continuar";
+        botao.classList.remove("btn-outline-success");
+        botao.classList.add("btn-success");
+      }, 1800);
+    }
+
+    // 10. Pergunta de usabilidade
+    function votarUsabilidade(opcao) {
+      const resultado = document.getElementById("votoResultado");
+
+      if (opcao === "B") {
+        resultado.innerHTML =
+          '<span class="text-success">✓ Boa escolha! A interface B prioriza clareza e facilidade de uso.</span>';
+      } else {
+        resultado.innerHTML =
+          '<span class="text-warning">A interface A pode ser visualmente chamativa, mas apresenta problemas de clareza e navegação.</span>';
+      }
+    }
+
+    // 11. Barra de progresso
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      document.getElementById("progressBar").style.width = progress + "%";
+    });
+
+    // 12. Modo apresentação
+    function modoApresentacao() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen?.();
+      } else {
+        document.exitFullscreen?.();
+      }
+    }
+
+    // 13. Navegação por seções
+    const secoes = [
+      "inicio",
+      "conceito",
+      "interacao",
+      "eventos",
+      "dom",
+      "demo",
+      "usabilidade",
+      "conclusao"
+    ];
+
+    function secaoAtual() {
+      let atual = 0;
+
+      secoes.forEach((id, index) => {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - window.innerHeight * 0.45) {
+          atual = index;
+        }
+      });
+
+      return atual;
+    }
+
+    function irSecao(direcao) {
+      let atual = secaoAtual();
+      atual += direcao;
+      atual = Math.max(0, Math.min(secoes.length - 1, atual));
+
+      document.getElementById(secoes[atual]).scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    // 14. Teclas para apresentação
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight" || event.key === "PageDown") {
+        irSecao(1);
+      }
+
+      if (event.key === "ArrowLeft" || event.key === "PageUp") {
+        irSecao(-1);
+      }
+
+      if (event.key === "Home") {
+        document.getElementById("inicio").scrollIntoView({ behavior: "smooth" });
+      }
+
+      if (event.key === "End") {
+        document.getElementById("conclusao").scrollIntoView({ behavior: "smooth" });
+      }
+    });
+
+    function voltarInicio() {
+      document.getElementById("inicio").scrollIntoView({ behavior: "smooth" });
+    }
+
+    // Quiz gerado a partir do conteúdo de perguntas.js
+    const quizSlides = document.getElementById("quizSlides");
+    const quizIndicators = document.getElementById("quizIndicators");
+    const quizResultado = document.getElementById("quizResultado");
+    let quizPontuacao = 0;
+    let quizRespondidas = 0;
+
+    perguntas.forEach((item, perguntaIndex) => {
+      const slide = document.createElement("div");
+      slide.className = `carousel-item${perguntaIndex === 0 ? " active" : ""}`;
+
+      const conteudo = document.createElement("div");
+      conteudo.className = "quiz-slide";
+      conteudo.innerHTML = `
+        <div class="mini-label mb-3">Pergunta ${perguntaIndex + 1} de ${perguntas.length}</div>
+        <h3 class="h4 fw-bold mb-4">${item.pergunta}</h3>
+        <div class="quiz-options d-grid gap-2"></div>
+        <div class="quiz-feedback mt-3 small" aria-live="polite"></div>`;
+
+      const opcoes = conteudo.querySelector(".quiz-options");
+      const feedback = conteudo.querySelector(".quiz-feedback");
+
+      item.alternativas.forEach((alternativa, alternativaIndex) => {
+        const botao = document.createElement("button");
+        botao.type = "button";
+        botao.className = "btn quiz-option";
+        botao.textContent = `${String.fromCharCode(65 + alternativaIndex)}. ${alternativa}`;
+        botao.addEventListener("click", () => {
+          if (opcoes.dataset.respondida) return;
+
+          opcoes.dataset.respondida = "true";
+          quizRespondidas += 1;
+          opcoes.querySelectorAll("button").forEach((opcao) => {
+            opcao.disabled = true;
+          });
+
+          if (alternativaIndex === item.correta) {
+            botao.classList.add("correct");
+            quizPontuacao += 1;
+            feedback.innerHTML = `<span class="text-success"><i class="bi bi-check-circle me-1"></i>Resposta correta!</span><br>${item.explicacao}`;
+          } else {
+            botao.classList.add("incorrect");
+            opcoes.querySelectorAll("button")[item.correta].classList.add("correct");
+            feedback.innerHTML = `<span class="text-danger"><i class="bi bi-x-circle me-1"></i>Resposta incorreta.</span><br>${item.explicacao}`;
+          }
+
+          quizResultado.textContent = `Pontuação: ${quizPontuacao}/${quizRespondidas} respondida${quizRespondidas === 1 ? "" : "s"}`;
+        });
+        opcoes.appendChild(botao);
+      });
+
+      slide.appendChild(conteudo);
+      quizSlides.appendChild(slide);
+
+      const indicador = document.createElement("button");
+      indicador.type = "button";
+      indicador.dataset.bsTarget = "#quizCarousel";
+      indicador.dataset.bsSlideTo = perguntaIndex;
+      indicador.setAttribute("aria-label", `Ir para pergunta ${perguntaIndex + 1}`);
+      if (perguntaIndex === 0) {
+        indicador.className = "active";
+        indicador.setAttribute("aria-current", "true");
+      }
+      quizIndicators.appendChild(indicador);
+    });
+  </script>
+</body>
+</html>
