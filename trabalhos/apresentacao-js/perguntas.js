@@ -53,5 +53,60 @@ const perguntas = [
         ],
         correta: 0,
         explicacao: "O código pode acessar email.value, remover espaços com trim(), impedir o envio padrão com preventDefault() e mostrar uma mensagem de orientação."
+    },
+    {
+        pergunta: "Qual método adiciona um evento de clique a um botão no JavaScript?",
+        alternativas: [
+            "button.addEventListener('click', funcao)",
+            "button.createEvent('click', funcao)",
+            "button.onEvent('click', funcao)",
+            "button.listen('click', funcao)"
+        ],
+        correta: 0,
+        explicacao: "addEventListener() permite executar uma função quando um evento, como um clique, acontece no elemento."
+    },
+    {
+        pergunta: "Qual propriedade pode ser usada para alterar o texto dentro de um elemento HTML selecionado?",
+        alternativas: [
+            "element.textContent",
+            "element.htmlText",
+            "element.changeText",
+            "element.textValue"
+        ],
+        correta: 0,
+        explicacao: "A propriedade textContent permite ler ou alterar o texto contido em um elemento HTML."
+    },
+    {
+        pergunta: "Qual comando exibe uma mensagem simples para o usuário em uma caixa de diálogo?",
+        alternativas: [
+            "message('Olá!')",
+            "alert('Olá!')",
+            "showMessage('Olá!')",
+            "dialog.open('Olá!')"
+        ],
+        correta: 1,
+        explicacao: "A função alert() exibe uma caixa de diálogo com uma mensagem para o usuário."
+    },
+    {
+        pergunta: "Como impedir que um formulário seja enviado automaticamente durante um evento?",
+        alternativas: [
+            "event.stopForm()",
+            "event.cancel()",
+            "event.preventDefault()",
+            "form.preventSend()"
+        ],
+        correta: 2,
+        explicacao: "preventDefault() impede o comportamento padrão do navegador, como o envio automático de um formulário."
+    },
+    {
+        pergunta: "Qual operador verifica se dois valores são iguais e também possuem o mesmo tipo?",
+        alternativas: [
+            "=",
+            "==",
+            "===",
+            "!=="
+        ],
+        correta: 2,
+        explicacao: "O operador === compara o valor e o tipo dos dois dados, sem fazer conversão automática."
     }
 ]
