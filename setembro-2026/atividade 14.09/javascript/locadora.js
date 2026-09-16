@@ -1,7 +1,6 @@
-const custoDia = 90;
-const custoKm = 0.20;
-
 const func = () => {
+    const custoDia = 90;
+    const custoKm = 0.20;
     let km = Number(prompt("Digite quilometros percorridos: "));
     let dias = Number(prompt("Digite qtnd. de dias alugado: "));
 
