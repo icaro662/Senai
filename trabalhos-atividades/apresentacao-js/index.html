@@ -1210,7 +1210,9 @@
         return;
       }
 
-      if (!email.validity.valid) {
+      const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!emailValido.test(email.value)) {
         feedback.innerHTML = `
           <div class="alert alert-warning">
             <i class="bi bi-envelope-exclamation me-2"></i>
